@@ -1,6 +1,6 @@
 package main
 
-import "github.com/souravbiswasanto/gitLocal/cmd"
+import "github.com/souravbiswassanto/gitLocal/cmd"
 
 func main() {
 	cmd.Execute()
