@@ -6,14 +6,18 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var rootCMD = &cobra.Command{
-	Use:   "gitLocal",
-	Short: "Git local",
-	Long:  "Git Local Contribution",
+func RootCMD() *cobra.Command {
+	rootCMD := &cobra.Command{
+		Use:   "gitLocal",
+		Short: "Git local",
+		Long:  "Git Local Contribution",
+	}
+	rootCMD.AddCommand(NewAddCmd())
+	return rootCMD
 }
 
 func Execute() {
-	err := rootCMD.Execute()
+	err := RootCMD().Execute()
 	if err != nil {
 		os.Exit(1)
 	}
