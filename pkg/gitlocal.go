@@ -1,10 +1,17 @@
 package pkg
 
-import (
-	"log"
-)
+import "log"
 
 func ShowLocalGitContrib(email string, paths []string) {
+	Scan(email, paths)
+	repoStoreFileName, err := GetRepoStoreFileName()
+	if err != nil {
+		log.Fatalln(err)
+	}
+	Stats(email, repoStoreFileName)
+}
+
+func Scan(email string, paths []string) {
 	folders, err := GetFolders(paths)
 	if err != nil {
 		log.Fatalf("err = %v", err)
@@ -20,5 +27,4 @@ func ShowLocalGitContrib(email string, paths []string) {
 	existingReposFromStoreFile := GetExistingReposFromStoreFile(repoStoreFileName)
 	mergedRepoSlice := MergeSlice(folders, existingReposFromStoreFile)
 	WriteReposToFile(repoStoreFileName, mergedRepoSlice)
-
 }

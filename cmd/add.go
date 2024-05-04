@@ -13,6 +13,7 @@ func NewAddCmd() *cobra.Command {
 		Short: "Add a dir",
 		Long:  "Add a dir for viewing the git local stats",
 		Run: func(cmd *cobra.Command, args []string) {
+			// pkg.Test()
 			pkg.ShowLocalGitContrib(email, paths)
 		},
 	}
