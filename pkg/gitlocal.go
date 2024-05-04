@@ -3,7 +3,7 @@ package pkg
 import "log"
 
 func ShowLocalGitContrib(email string, paths []string) {
-	Scan(email, paths)
+	Scan(paths)
 	repoStoreFileName, err := GetRepoStoreFileName()
 	if err != nil {
 		log.Fatalln(err)
@@ -11,7 +11,7 @@ func ShowLocalGitContrib(email string, paths []string) {
 	Stats(email, repoStoreFileName)
 }
 
-func Scan(email string, paths []string) {
+func Scan(paths []string) {
 	folders, err := GetFolders(paths)
 	if err != nil {
 		log.Fatalf("err = %v", err)
