@@ -2,13 +2,13 @@ package pkg
 
 import "log"
 
-func ShowLocalGitContrib(email string, paths []string) {
+func ShowLocalGitContrib(email string, username string, paths []string) {
 	Scan(paths)
 	repoStoreFileName, err := GetRepoStoreFileName()
 	if err != nil {
 		log.Fatalln(err)
 	}
-	Stats(email, repoStoreFileName)
+	Stats(email, username, repoStoreFileName)
 }
 
 func Scan(paths []string) {
